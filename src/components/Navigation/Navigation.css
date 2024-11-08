@@ -1,0 +1,23 @@
+.nav {
+  padding: 0;
+  margin: 0;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #000;
+  padding: 30px;
+}
+
+.nav__link:hover {
+  opacity: 60%;
+}
+
+.nav__link_active {
+  border-bottom: 3px solid rgba(0, 0, 0, 0.6);
+  opacity: 60%;
+}
+
+.nav__link:last-child {
+  margin: 0;
+}

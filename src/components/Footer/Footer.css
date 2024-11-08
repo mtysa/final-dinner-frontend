@@ -1,0 +1,27 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  padding-top: 85px;
+}
+
+.footer__author {
+  margin: 0;
+  opacity: 60%;
+}
+
+/* .footer__links-container {
+  margin: 0;
+} */
+
+.footer__link:hover {
+  opacity: 60%;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: #000;
+  margin-right: 30px;
+}

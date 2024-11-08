@@ -1,0 +1,15 @@
+.about-container {
+  display: flex;
+  align-items: center;
+}
+.about__author {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  margin-left: 104px;
+}
+
+.about__bio {
+  width: 600px;
+  margin-left: 60px;
+}

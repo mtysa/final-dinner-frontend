@@ -1,0 +1,17 @@
+.search__input {
+  width: 396px;
+  height: 56px;
+  border-radius: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+.search__submit {
+  position: absolute;
+  width: 168px;
+  height: 60px;
+  border-radius: 100px;
+  left: 350px;
+  margin: 0;
+  padding: 0;
+}
