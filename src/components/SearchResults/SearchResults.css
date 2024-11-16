@@ -1,0 +1,14 @@
+.results-container {
+  margin-left: 104px;
+}
+
+.more__btn {
+  width: 288px;
+  height: 64px;
+  border-radius: 100px;
+  margin: 0;
+  padding: 0;
+  background-color: #e8e8e8;
+  color: #000;
+  border-style: none;
+}

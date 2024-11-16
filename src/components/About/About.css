@@ -1,6 +1,8 @@
 .about-container {
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-top: 80px;
 }
 .about__author {
   width: 250px;

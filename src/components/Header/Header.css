@@ -13,12 +13,28 @@
   width: 125px;
 }
 
-.header__logo-container {
+.header__essentials {
   display: flex;
-  align-items: center;
-  text-decoration: none;
 }
 
-.header__logo-print {
-  text-decoration: none;
+.header__register {
+  border-style: none;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000;
+  cursor: pointer;
+  padding: 0;
+  background-color: #fff;
+}
+
+.header__login {
+  border-style: none;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #000;
+  cursor: pointer;
+  padding-left: 20px;
+  background-color: #fff;
 }
