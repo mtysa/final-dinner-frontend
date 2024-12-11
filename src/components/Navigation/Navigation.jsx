@@ -10,9 +10,10 @@ function Navigation() {
       <NavLink to="/" className={customClassName}>
         Home
       </NavLink>
-      <NavLink to="/saved-recipes" className={customClassName}>
+      {/* show only when logged in */}
+      {/* <NavLink to="/saved-recipes" className={customClassName}>
         Saved Recipes
-      </NavLink>
+      </NavLink> */}
     </nav>
   );
 }

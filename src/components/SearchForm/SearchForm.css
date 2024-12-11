@@ -3,20 +3,6 @@
   justify-content: center;
 }
 
-.search__title {
-  margin: 0 0 32px;
-  padding: 0;
-}
-
-.search__steps {
-  margin-bottom: 32px;
-}
-
-.searchForm {
-  margin-top: 80px;
-  margin-bottom: 80px;
-}
-
 .search__input {
   width: 396px;
   height: 56px;
