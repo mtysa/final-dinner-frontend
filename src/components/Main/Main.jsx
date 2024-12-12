@@ -3,7 +3,13 @@ import About from "../About/About";
 import SearchForm from "../SearchForm/SearchForm";
 import RandomRecipesSection from "../RandomRecipesSection/RandomRecipesSection";
 
-function Main({ randomRecipes, handleRecipeClick }) {
+function Main({
+  randomRecipes,
+  handleRecipeClick,
+  handleSearchClick,
+  ingredientInput,
+  handleInputChange,
+}) {
   return (
     <main>
       <form className="searchForm">
@@ -12,7 +18,11 @@ function Main({ randomRecipes, handleRecipeClick }) {
           Step 1. Enter your ingredients, Step 2. Search for recipes, Step 3.
           Start cooking, & enjoy!
         </p>
-        <SearchForm />
+        <SearchForm
+          handleSearchClick={handleSearchClick}
+          ingredientInput={ingredientInput}
+          handleInputChange={handleInputChange}
+        />
       </form>
 
       <RandomRecipesSection

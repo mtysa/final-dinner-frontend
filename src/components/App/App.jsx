@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 // Application
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import SavedRecipes from "../SavedRecipes/SavedRecipes";
 import Footer from "../Footer/Footer";
+import Preloader from "../Preloader/Preloader";
 // API
-import { getRandomRecipes, API_KEY } from "../../utils/Spoonacular";
+import {
+  getRandomRecipes,
+  searchRecipes,
+  API_KEY,
+} from "../../utils/Spoonacular";
 // Modals
 import RegisterModal from "../RegisterModal/RegisterModal";
 import LoginModal from "../LoginModal/LoginModal";
@@ -18,14 +23,22 @@ function App() {
   const [activeModal, setActiveModal] = useState("");
   const [randomRecipes, setRandomRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState({});
+  const [searchResults, setSearchResults] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [ingredientInput, setIngredientInput] = useState("");
+  const navigate = useNavigate();
 
   // Fetch random recipes
   useEffect(() => {
     getRandomRecipes(API_KEY)
       .then((res) => {
         setRandomRecipes(res.recipes);
+        setLoading(false);
       })
-      .catch(console.error);
+      .catch((err) => {
+        console.error(err);
+        setLoading(false);
+      });
   }, []);
 
   // Modal Functions
@@ -64,9 +77,27 @@ function App() {
     };
   }, [activeModal]);
 
+  // Search function
+  const handleInputChange = (e) => {
+    setIngredientInput(e.target.value);
+  };
+  const handleSearchClick = async () => {
+    setLoading(true);
+    try {
+      const recipes = await searchRecipes(ingredientInput);
+      setSearchResults(recipes);
+      setLoading(false);
+      navigate("/search-results");
+    } catch (err) {
+      console.error(err);
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="page">
       <div className="page__content">
+        {loading && <Preloader />}
         <Header
           handleRegisterClick={handleRegisterClick}
           handleLoginClick={handleLoginClick}
@@ -77,12 +108,27 @@ function App() {
             element={
               <Main
                 handleRecipeClick={handleRecipeClick}
+                handleSearchClick={handleSearchClick}
                 randomRecipes={randomRecipes}
+                ingredientInput={ingredientInput}
+                handleInputChange={handleInputChange}
               />
             }
           />
           <Route path="/saved-recipes" element={<SavedRecipes />} />
-          <Route path="/search-results" element={<SearchResults />} />
+          <Route
+            path="/search-results"
+            element={
+              <SearchResults
+                searchResults={searchResults}
+                loading={loading}
+                handleRecipeClick={handleRecipeClick}
+                handleSearchClick={handleSearchClick}
+                ingredientInput={ingredientInput}
+                handleInputChange={handleInputChange}
+              />
+            }
+          />
         </Routes>
         <Footer />
       </div>
@@ -108,5 +154,3 @@ function App() {
 }
 
 export default App;
-
-//need to fix modal css

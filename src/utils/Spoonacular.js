@@ -10,51 +10,18 @@ function checkRes(res) {
   }
 }
 
-// // Event listener for the search form
-// document.getElementById("searchForm").addEventListener("submit", (e) => {
-//   e.preventDefault();
-//   const ingredients = document.getElementById("ingredientInput").value;
-//   searchRecipes(ingredients);
-// });
-
-// // Function to search recipes
-// async function searchRecipes(ingredients) {
-//   try {
-//     // Fetch recipes from the API
-//     const response = await fetch(
-//       `${BASE_URL}?ingredients=${ingredients}&number=5&apiKey=${API_KEY}`
-//     );
-//     const data = await response.json();
-
-//     // Display results
-//     displayResults(data);
-//   } catch (error) {
-//     console.error("Error fetching recipes:", error);
-//   }
-// }
-
-// // Function to display recipe results
-// function displayResults(recipes) {
-//   const resultsContainer = document.getElementById("results");
-//   resultsContainer.innerHTML = ""; // Clear previous results
-
-//   recipes.forEach((recipe) => {
-//     const recipeDiv = document.createElement("div");
-//     recipeDiv.classList.add("recipe");
-
-//     recipeDiv.innerHTML = `
-//             <h3>${recipe.title}</h3>
-//             <img src="${recipe.image}" alt="${recipe.title}" />
-//             <p><strong>Used Ingredients:</strong> ${recipe.usedIngredientCount}</p>
-//             <p><strong>Missed Ingredients:</strong> ${recipe.missedIngredientCount}</p>
-//         `;
-
-//     resultsContainer.appendChild(recipeDiv);
-//   });
-// }
+function searchRecipes(ingredients) {
+  return fetch(
+    `${BASE_URL}/findByIngredients?ingredients=${ingredients}&number=100&apiKey=${API_KEY}`,
+    {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }
+  ).then(checkRes);
+}
 
 // Function to display random recipes
-function getRandomRecipes(API_KEY) {
+function getRandomRecipes() {
   return fetch(`${BASE_URL}/random?number=10&apiKey=${API_KEY}`, {
     method: "GET",
     headers: {
@@ -63,4 +30,4 @@ function getRandomRecipes(API_KEY) {
   }).then(checkRes);
 }
 
-export { API_KEY, checkRes, getRandomRecipes };
+export { API_KEY, checkRes, getRandomRecipes, searchRecipes };

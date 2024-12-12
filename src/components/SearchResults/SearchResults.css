@@ -1,5 +1,26 @@
-.results-container {
-  margin-left: 104px;
+.results__card {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.results__title {
+  margin: 0;
+}
+
+.results__ingredients_content {
+  display: flex;
+  gap: 20px;
+}
+
+.results__ingredients_count {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+.results__caption {
+  margin-left: 25px;
 }
 
 .more__btn {
@@ -8,7 +29,27 @@
   border-radius: 100px;
   margin: 0;
   padding: 0;
-  background-color: #e8e8e8;
-  color: #000;
-  border-style: none;
+  background-color: #2f71e5;
+  color: #fff;
+  border-color: #2f71e5;
+}
+
+.more__btn:hover {
+  background-color: #fff;
+  color: #2f71e5;
+  cursor: pointer;
+}
+
+.results__footer {
+  display: flex;
+  justify-content: center;
+}
+
+.search__title {
+  margin-bottom: 0;
+}
+
+.search__caption {
+  margin-top: 0;
+  margin-bottom: 25px;
 }

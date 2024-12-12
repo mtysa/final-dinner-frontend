@@ -1,11 +1,6 @@
 import "./RecipeModal.css";
 
 function RecipeModal({ activeModal, closeActiveModal, recipe }) {
-  const stripHTML = (htmlString) => {
-    const tempDiv = document.createElement("div");
-    tempDiv.innerHTML = htmlString;
-    return tempDiv.textContent || tempDiv.innerText || "";
-  };
   return (
     <div className={`modal ${activeModal === "preview" && "modal_opened"}`}>
       <div className="modal__content modal__content_type_image">
@@ -37,16 +32,6 @@ function RecipeModal({ activeModal, closeActiveModal, recipe }) {
               </ul>
             ) : (
               <p>No ingredients available.</p>
-            )}
-
-            {/* Recipe instructions */}
-            <h3 className="modal__subheading">Instructions:</h3>
-            {recipe?.instructions ? (
-              <p className="modal__instructions">
-                {stripHTML(recipe.instructions)}
-              </p>
-            ) : (
-              <p className="modal__instructions">Instructions not available.</p>
             )}
 
             {/* Full recipe link */}
