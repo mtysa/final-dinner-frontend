@@ -86,7 +86,7 @@ function App() {
     try {
       const recipes = await searchRecipes(ingredientInput);
       setSearchResults(recipes);
-      navigate("/search-results");
+      navigate("/final-dinner-frontend/search-results");
       setIngredientInput("");
     } catch (err) {
       console.error("Search failed:", err);
@@ -106,7 +106,7 @@ function App() {
         />
         <Routes>
           <Route
-            path="/"
+            path="/final-dinner-frontend/"
             element={
               <Main
                 handleRecipeClick={handleRecipeClick}
@@ -118,7 +118,7 @@ function App() {
             }
           />
           <Route
-            path="/search-results"
+            path="/final-dinner-frontend/search-results"
             element={
               <SearchResults
                 searchResults={searchResults}

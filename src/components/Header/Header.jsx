@@ -7,7 +7,7 @@ function Header({ handleRegisterClick, handleLoginClick }) {
   return (
     <header className="header">
       <div className="header__logo-container">
-        <Link to="/final-dinner-frontend">
+        <Link to="/final-dinner-frontend/">
           <img src={logo} alt="dinnertime logo" className="header__logo" />{" "}
         </Link>
       </div>

@@ -7,7 +7,7 @@ function Navigation() {
 
   return (
     <nav className="nav">
-      <NavLink to="/final-dinner-frontend" className={customClassName}>
+      <NavLink to="/final-dinner-frontend/" className={customClassName}>
         Home
       </NavLink>
     </nav>
