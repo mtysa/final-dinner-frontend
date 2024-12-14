@@ -7,13 +7,9 @@ function Navigation() {
 
   return (
     <nav className="nav">
-      <NavLink to="/" className={customClassName}>
+      <NavLink to="/final-dinner-frontend" className={customClassName}>
         Home
       </NavLink>
-      {/* show only when logged in */}
-      {/* <NavLink to="/saved-recipes" className={customClassName}>
-        Saved Recipes
-      </NavLink> */}
     </nav>
   );
 }
