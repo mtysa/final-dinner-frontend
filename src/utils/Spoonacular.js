@@ -30,4 +30,4 @@ function getRandomRecipes() {
   }).then(checkRes);
 }
 
-export { API_KEY, checkRes, getRandomRecipes, searchRecipes };
+export { API_KEY, getRandomRecipes, searchRecipes };

@@ -29,9 +29,6 @@ function SearchResults({
         handleInputChange={handleInputChange}
       />
       <h1 className="search__title">Search results:</h1>
-      <p className="search__caption">
-        Recipes are displayed with common household ingredients in mind.*
-      </p>
       <div className="results__content">
         {searchResults.slice(0, visibleCount).map((recipe) => (
           <div key={recipe.id} className="results__card">

@@ -1,10 +1,10 @@
+// React
 import { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 // Application
 import "./App.css";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
-import SavedRecipes from "../SavedRecipes/SavedRecipes";
 import Footer from "../Footer/Footer";
 import Preloader from "../Preloader/Preloader";
 // API
@@ -24,7 +24,7 @@ function App() {
   const [randomRecipes, setRandomRecipes] = useState([]);
   const [selectedRecipe, setSelectedRecipe] = useState({});
   const [searchResults, setSearchResults] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [ingredientInput, setIngredientInput] = useState("");
   const navigate = useNavigate();
 
@@ -33,12 +33,12 @@ function App() {
     getRandomRecipes(API_KEY)
       .then((res) => {
         setRandomRecipes(res.recipes);
-        setLoading(false);
       })
       .catch((err) => {
-        console.error(err);
-        setLoading(false);
-      });
+        console.error("Failed to fetch random recipes:", err);
+        alert("Error fetching recipes. Please try again.");
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   // Modal Functions
@@ -86,10 +86,12 @@ function App() {
     try {
       const recipes = await searchRecipes(ingredientInput);
       setSearchResults(recipes);
-      setLoading(false);
       navigate("/search-results");
+      setIngredientInput("");
     } catch (err) {
-      console.error(err);
+      console.error("Search failed:", err);
+      alert("Search failed. Please try again.");
+    } finally {
       setLoading(false);
     }
   };
@@ -115,7 +117,6 @@ function App() {
               />
             }
           />
-          <Route path="/saved-recipes" element={<SavedRecipes />} />
           <Route
             path="/search-results"
             element={
@@ -135,13 +136,11 @@ function App() {
       <RegisterModal
         activeModal={activeModal}
         closeActiveModal={closeActiveModal}
-        // handleRegistration={handleRegistration}
         handleLoginClick={handleLoginClick}
       />
       <LoginModal
         activeModal={activeModal}
         closeActiveModal={closeActiveModal}
-        // handleLogin={handleLogin}
         handleRegisterClick={handleRegisterClick}
       />
       <RecipeModal

@@ -1,6 +1,9 @@
 .searchForm-container {
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  width: fit-content;
 }
 
 .search__input {
@@ -13,18 +16,39 @@
 }
 
 .search__submit {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 168px;
   height: 60px;
   border-radius: 100px;
-  margin: 0;
-  padding: 0;
   background-color: #2f71e5;
   color: #fff;
-  border-color: #2f71e5;
+  border-color: none;
 }
 
 .search__submit:hover {
   background-color: #fff;
   color: #2f71e5;
   cursor: pointer;
+}
+
+.search__submit.disabled {
+  background-color: #ccc;
+  cursor: default;
+}
+
+.search__submit.disabled:hover {
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  .search__input {
+    width: 100%;
+    padding-right: 140px;
+  }
+  .search__submit {
+    width: 100px;
+  }
 }
